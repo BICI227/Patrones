@@ -1,0 +1,7 @@
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\obj\Debug\ExamenU3.csproj.AssemblyReference.cache
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\obj\Debug\ExamenU3.csproj.CoreCompileInputs.cache
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\bin\Debug\ExamenU3.exe.config
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\bin\Debug\ExamenU3.exe
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\bin\Debug\ExamenU3.pdb
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\obj\Debug\ExamenU3.exe
+C:\Users\BICI\source\repos\ExamenU3\ExamenU3\obj\Debug\ExamenU3.pdb
