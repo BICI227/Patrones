@@ -74,6 +74,7 @@ namespace ExamenU3
                 if (!int.TryParse(Console.ReadLine(), out int mesaId))
                 {
                     Console.WriteLine("Número de mesa no válido.");
+                    Console.ReadKey();
                     return;
                 }
 
@@ -93,6 +94,7 @@ namespace ExamenU3
                 if (!decimal.TryParse(Console.ReadLine(), out decimal montoRecibido) || montoRecibido < total)
                 {
                     Console.WriteLine("Monto insuficiente o no válido.");
+                    Console.ReadKey();
                     return;
                 }
 

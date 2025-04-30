@@ -27,17 +27,18 @@ namespace ExamenU3
 
         public void MostrarMenu()
         {
-            while (true)
+            while (true)  // Bucle agregado
             {
                 Console.Clear();
                 Console.WriteLine("\nGESTIÓN DE PEDIDOS");
                 Console.WriteLine("1. Crear nuevo pedido");
-                Console.WriteLine("2. Ver pedidos existentes");;
-                Console.WriteLine("3. Volver al menú principal");
+                Console.WriteLine("2. Ver pedidos existentes");
+                Console.WriteLine("3. Finalizar pedido");
+                Console.WriteLine("4. Volver al menú principal");
                 Console.Write("Seleccione una opción: ");
 
                 var opcion = Console.ReadLine();
-                if (opcion == "3") break;
+                if (opcion == "4") break;  // Ahora el break es válido dentro del while
 
                 switch (opcion)
                 {
@@ -46,6 +47,19 @@ namespace ExamenU3
                         break;
                     case "2":
                         MostrarPedidosExistentes();
+                        break;
+                    case "3":
+                        MostrarPedidosExistentes();
+                        Console.Write("Ingrese ID del pedido a finalizar: ");
+                        if (int.TryParse(Console.ReadLine(), out int id))
+                        {
+                            FinalizarPedido(id);
+                        }
+                        else
+                        {
+                            Console.WriteLine("ID inválido");
+                        }
+                        Console.ReadKey();
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
@@ -91,29 +105,30 @@ namespace ExamenU3
                 Console.ReadKey();
             }
         }
+        private void FinalizarPedido(int pedidoId)
+        {
+            var indice = _pedidos.FindIndex(p => p.Id == pedidoId); // Ahora compara int con int
 
+            if (indice == -1)
+            {
+                Console.WriteLine($"No se encontró el pedido con ID {pedidoId}");
+                return;
+            }
 
+            var pedido = _pedidos[indice];
 
-        /* if (!int.TryParse(Console.ReadLine(), out int mesaId))
-         {
-             Console.WriteLine("Número de mesa no válido.");
-             return;
-         }
+            Console.WriteLine("\n=== OPCIONES ADICIONALES ===");
+            Console.WriteLine("¿Aplicar descuento del 10%? (S/N)");
+            if (Console.ReadLine()?.ToUpper() == "S")
+            {
+                pedido = new DescuentoDecorator(pedido, 10);
+            }
 
-         Console.Write("Tipo de pedido (Cocina/Bebidas): ");
-         var tipo = Console.ReadLine();
-
-         try
-         {
-             var pedido = _factory.CrearPedido(tipo, _pedidos.Count + 1, mesaId);
-             AgregarItemsAPedido(pedido);
-             _pedidos.Add(pedido);
-             Console.WriteLine($"Pedido {pedido.Id} creado para mesa {mesaId}");
-         }
-         catch (Exception ex)
-         {
-             Console.WriteLine($"Error: {ex.Message}");
-         }*/
+            _pedidos[indice] = pedido;
+            Console.WriteLine("\n=== RESUMEN FINAL ===");
+            Console.WriteLine(pedido.MostrarDetalle());
+            Console.WriteLine($"Pedido {pedidoId} actualizado correctamente");
+        }
 
         private int SeleccionarMesa()
         {

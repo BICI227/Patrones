@@ -50,6 +50,7 @@
     <Compile Include="Inventario.cs" />
     <Compile Include="MesaState.cs" />
     <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoDecorator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SistemaVentas.cs" />
